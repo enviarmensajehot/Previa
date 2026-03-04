@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mira esto</title>
+  <title>Mi video a escondida de mi esposo 😱🔥</title>
 
   <meta property="og:title" content="Mi video a escondida de mi esposo 😱🔥">
   <meta property="og:description" content="No vas a creer lo que sucede en este video...">
   <meta property="og:image" content="https://i.postimg.cc/mkK0Tt47/b9b7b2e50e14d32c6913959f1442266a.jpg">
-  <meta property="og:url" content="https://enviarmensajehot.github.io/Video1/">
+  <meta property="og:url" content="https://enviarmensajehot.github.io/30/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -34,17 +34,6 @@
       object-fit: cover;
     }
 
-    /* CAPA DE PUBLICIDAD */
-    .click-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-    }
-
-    /* BOTÓN DESCARGAR */
     .download-btn {
       position: absolute;
       top: 15px;
@@ -60,7 +49,15 @@
       border: 1px solid #444;
     }
 
-    /* VENTANA EMERGENTE (MODAL) */
+    .click-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -128,7 +125,6 @@
 
     let downloadUnlocked = false;
 
-    // Lógica descarga: primer clic publicidad, segundo clic descarga
     btnDescarga.addEventListener('click', function(e) {
       if (!downloadUnlocked) {
         e.preventDefault();
@@ -138,8 +134,7 @@
       }
     });
 
-    // Aparece el popup en un tiempo aleatorio (10 a 20 seg)
-    const randomTime = Math.floor(Math.random() * (20000 - 10000 + 1) + 10000);
+    const randomTime = Math.floor(Math.random() * (18000 - 10000 + 1) + 10000);
 
     setTimeout(() => {
       if (video) {
@@ -148,7 +143,6 @@
       }
     }, randomTime);
 
-    // Botón Continuar: abre publicidad y sigue el video
     btnContinue.addEventListener('click', function() {
       window.open(adLink, '_blank');
       modal.style.display = 'none';
@@ -159,5 +153,6 @@
 
 </body>
 </html>
+
 
 
