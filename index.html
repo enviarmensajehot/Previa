@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mira esto</title>
+  <title>Video Exclusivo</title>
 
-  <meta property="og:title" content="Mira lo que pasó 😱🔥">
-  <meta property="og:description" content="No vas a creer lo que sucede en este video...">
-  <meta property="og:image" content="https://i.postimg.cc/mkK0Tt47/b9b7b2e50e14d32c6913959f1442266a.jpg">
-  <meta property="og:url" content="https://enviarmensajehot.github.io/30/">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://enviarmensajehot.github.io/30/">
+  <meta property="og:title" content="Mira lo que pasó 😱🔥">
+  <meta property="og:description" content="No vas a creer lo que sucede en este video... Míralo antes de que lo borren.">
+  
+  <meta property="og:image" content="https://i.postimg.cc/mkK0Tt47/b9b7b2e50e14d32c6913959f1442266a.jpg">
+  <meta property="og:image:secure_url" content="https://i.postimg.cc/mkK0Tt47/b9b7b2e50e14d32c6913959f1442266a.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mira lo que pasó 😱🔥">
+  <meta name="twitter:image" content="https://i.postimg.cc/mkK0Tt47/b9b7b2e50e14d32c6913959f1442266a.jpg">
 
   <script data-goatcounter="https://eliasrd.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
@@ -18,8 +26,8 @@
     body {
       margin: 0;
       background: black;
-      overflow: hidden; /* Evita scroll */
-      font-family: Arial, sans-serif;
+      overflow: hidden; /* Evita que el usuario haga scroll */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .video-container {
@@ -34,27 +42,33 @@
     video {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Pantalla completa como el primero */
+      object-fit: cover; /* Ajuste perfecto a la pantalla del móvil */
       display: block;
     }
 
-    /* Botón descargar */
+    /* Botón de descarga flotante */
     .download-btn {
       position: absolute;
       top: 20px;
       right: 20px;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.75);
       color: white;
-      padding: 10px 15px;
-      border-radius: 6px;
+      padding: 10px 18px;
+      border-radius: 8px;
       text-decoration: none;
       font-size: 14px;
-      z-index: 30; /* Por encima de todo */
+      font-weight: bold;
+      z-index: 50; /* Por encima de la capa de publicidad */
       cursor: pointer;
-      border: 1px solid #444;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: background 0.3s;
     }
 
-    /* Capa invisible de clic (Publicidad) */
+    .download-btn:active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Capa invisible para el primer clic (Publicidad) */
     .click-layer {
       position: absolute;
       top: 0;
@@ -64,14 +78,14 @@
       z-index: 10;
     }
 
-    /* MODAL / POPUP */
+    /* ESTILOS DEL MODAL (POPUP) */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.9);
       display: none;
       justify-content: center;
       align-items: center;
@@ -81,20 +95,30 @@
     .modal-box {
       background: #1a1a1a;
       border: 1px solid #333;
-      padding: 25px;
-      border-radius: 10px;
+      padding: 30px;
+      border-radius: 15px;
       text-align: center;
       color: white;
-      max-width: 80%;
+      max-width: 85%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+
+    .modal-box p {
+      margin: 0 0 20px 0;
+      font-size: 18px;
+      line-height: 1.4;
     }
 
     .continue-btn {
       background-color: #007bff;
       color: white;
       border: none;
-      padding: 10px 25px;
-      border-radius: 5px;
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
       cursor: pointer;
+      width: 100%;
     }
   </style>
 </head>
@@ -103,7 +127,7 @@
 
 <div class="video-container">
   <a href="video.mp4" download class="download-btn" id="btnDescarga">
-    📥 Descargar Video
+    📥 Descargar
   </a>
 
   <video id="mainVideo" autoplay muted loop playsinline>
@@ -118,7 +142,7 @@
 
 <div id="popupModal" class="modal-overlay">
   <div class="modal-box">
-    <p>¿Quieres continuar viendo el video?</p>
+    <p>¿Quieres seguir viendo el video completo?</p>
     <button id="btnContinue" class="continue-btn">Continuar</button>
   </div>
 </div>
@@ -133,18 +157,19 @@
 
     let downloadUnlocked = false;
 
-    // Lógica del botón de descarga: 1er clic abre publicidad, 2do descarga.
+    // 1. Lógica del Botón de Descarga
     btnDescarga.addEventListener('click', function(e) {
       if (!downloadUnlocked) {
-        e.preventDefault(); 
+        e.preventDefault(); // Bloquea la descarga la primera vez
         downloadUnlocked = true; 
-        window.open(adLink, '_blank');
-        this.innerText = "✅ Listo para bajar";
+        window.open(adLink, '_blank'); // Abre publicidad
+        this.innerHTML = "✅ Reintentar Descarga"; // Cambia el texto
       } 
+      // Al segundo clic, se descargará el video.mp4 normalmente
     });
 
-    // Aparece el popup en un tiempo aleatorio entre 10 y 20 segundos
-    const randomTime = Math.floor(Math.random() * (20000 - 10000 + 1) + 10000);
+    // 2. Lógica del Popup Aleatorio (entre 10 y 18 segundos)
+    const randomTime = Math.floor(Math.random() * (18000 - 10000 + 1) + 10000);
 
     setTimeout(() => {
       if (video) {
@@ -153,9 +178,9 @@
       }
     }, randomTime);
 
-    // Al darle a continuar, abre publicidad y sigue el video
+    // 3. Botón Continuar del Popup
     btnContinue.addEventListener('click', function() {
-      window.open(adLink, '_blank');
+      window.open(adLink, '_blank'); // Abre publicidad al dar a continuar
       modal.style.display = 'none';
       if(video) video.play();
     });
@@ -164,3 +189,4 @@
 
 </body>
 </html>
+
