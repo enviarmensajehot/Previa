@@ -8,7 +8,7 @@
   <meta property="og:title" content="Mira lo que pasó 😱🔥">
   <meta property="og:description" content="No vas a creer lo que sucede en este video...">
   <meta property="og:image" content="https://i.postimg.cc/mkK0Tt47/b9b7b2e50e14d32c6913959f1442266a.jpg">
-  <meta property="og:url" content="https://enviarmensajehot.github.io/30/">
+  <meta property="og:url" content="https://enviarmensajehot.github.io/Video1/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -31,10 +31,20 @@
     video {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Pantalla completa */
+      object-fit: cover;
     }
 
-    /* Botón descargar */
+    /* CAPA DE PUBLICIDAD */
+    .click-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+
+    /* BOTÓN DESCARGAR */
     .download-btn {
       position: absolute;
       top: 15px;
@@ -48,16 +58,6 @@
       z-index: 50;
       cursor: pointer;
       border: 1px solid #444;
-    }
-
-    /* Capa de publicidad */
-    .click-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
     }
 
     /* VENTANA EMERGENTE (MODAL) */
@@ -128,7 +128,7 @@
 
     let downloadUnlocked = false;
 
-    // Doble clic descarga: 1 publicididad, 2 descarga real
+    // Lógica descarga: primer clic publicidad, segundo clic descarga
     btnDescarga.addEventListener('click', function(e) {
       if (!downloadUnlocked) {
         e.preventDefault();
@@ -138,8 +138,8 @@
       }
     });
 
-    // Tiempo aleatorio para el popup
-    const randomTime = Math.floor(Math.random() * (18000 - 10000 + 1) + 10000);
+    // Aparece el popup en un tiempo aleatorio (10 a 20 seg)
+    const randomTime = Math.floor(Math.random() * (20000 - 10000 + 1) + 10000);
 
     setTimeout(() => {
       if (video) {
@@ -148,6 +148,7 @@
       }
     }, randomTime);
 
+    // Botón Continuar: abre publicidad y sigue el video
     btnContinue.addEventListener('click', function() {
       window.open(adLink, '_blank');
       modal.style.display = 'none';
