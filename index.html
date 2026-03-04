@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta property="og:title" content="Mi video a escondida de mi esposo 😱🔥">
-  <meta property="og:description" content="No vas a creer lo que sucede en este video...">
-  <meta property="og:image" content="https://i.postimg.cc/mkK0Tt47/b9b7b2e50e14d32c6913959f1442266a.jpg">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi video a escondida de mi esposo 😱🔥</title>
+
+  <meta property="og:title" content="Mi video a escondida de mi esposo 😱🔥">
+  <meta property="og:description" content="No vas a creer lo que sucede en este video...">
+  <meta property="og:image" content="https://i.postimg.cc/mkK0Tt47/b9b7b2e50e14d32c6913959f1442266a.jpg">
+  <meta property="og:url" content="https://enviarmensajehot.github.io/Video1/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 
   <script data-goatcounter="https://eliasrd.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
@@ -59,7 +60,7 @@
       border: 1px solid #444;
     }
 
-    /* MODAL / POPUP */
+    /* VENTANA EMERGENTE (MODAL) */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -127,7 +128,7 @@
 
     let downloadUnlocked = false;
 
-    // Lógica descarga
+    // Lógica descarga: primer clic publicidad, segundo clic descarga
     btnDescarga.addEventListener('click', function(e) {
       if (!downloadUnlocked) {
         e.preventDefault();
@@ -137,8 +138,8 @@
       }
     });
 
-    // Popup aleatorio
-    const randomTime = Math.floor(Math.random() * (18000 - 10000 + 1) + 10000);
+    // Aparece el popup en un tiempo aleatorio (10 a 20 seg)
+    const randomTime = Math.floor(Math.random() * (20000 - 10000 + 1) + 10000);
 
     setTimeout(() => {
       if (video) {
@@ -147,6 +148,7 @@
       }
     }, randomTime);
 
+    // Botón Continuar: abre publicidad y sigue el video
     btnContinue.addEventListener('click', function() {
       window.open(adLink, '_blank');
       modal.style.display = 'none';
@@ -157,6 +159,7 @@
 
 </body>
 </html>
+
 
 
 
